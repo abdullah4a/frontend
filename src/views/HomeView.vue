@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>This is a home page</h1>
-    <p>Welcome to the home page!</p>
+    <h6>Soft Square</h6>
+    <p>This Application is for test purpose for Soft Square</p>
   </div>
 </template>
 

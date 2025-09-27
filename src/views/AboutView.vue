@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Test Application</h1>
+    <h6>Test Application</h6>
     <p>This Application is for test purpose for {{ companyName }}</p>
   </div>
 </template>
