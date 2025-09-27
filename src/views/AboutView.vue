@@ -1,5 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <h1>Test Application</h1>
+    <p>This Application is for test purpose for {{ companyName }}</p>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const companyName = ref('Soft Square') // TODO: get from config
+
+</script>
+
+<style scoped>
+
+</style>
