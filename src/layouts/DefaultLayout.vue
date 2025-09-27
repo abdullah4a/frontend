@@ -1,115 +1,65 @@
 <template>
-  <div class="default-layout">
+  <q-layout view="hHh lpR fFf">
     <!-- Header -->
-    <header class="header">
-      <div class="container">
-        <div class="nav-brand">
-          <h1>Task Manager</h1>
+    <q-header elevated>
+      <q-toolbar>
+        <!-- Hamburger Menu (mobile) -->
+        <q-btn
+          flat
+          dense
+          round
+          icon="menu"
+          aria-label="Menu"
+          @click="leftDrawerOpen = !leftDrawerOpen"
+          class="q-mr-sm"
+        />
+        <q-space></q-space>
+        <div class="row items-center no-wrap q-gutter-sm">
+            <q-icon name="settings" :disabled="true"></q-icon>
+        <q-icon name="notifications" :disabled="true"></q-icon>
+        <q-icon name="person" :disabled="true"></q-icon>
+
         </div>
-        <nav class="nav">
-          <router-link to="/" class="nav-link">Home</router-link>
-          <router-link to="/tasks" class="nav-link">Tasks</router-link>
-          <router-link to="/about" class="nav-link">About</router-link>
-        </nav>
-      </div>
-    </header>
+        </q-toolbar>
+    </q-header>
+
+    <!-- Drawer (Mobile Nav) -->
+    <q-drawer v-model="leftDrawerOpen" behavior="mobile" bordered>
+        <q-toolbar>
+            <q-toolbar-title>
+              Task Manager
+            </q-toolbar-title>
+        </q-toolbar>
+      <q-list>
+        <q-item clickable v-ripple to="/" @click="leftDrawerOpen = false">
+          <q-item-section>Home</q-item-section>
+        </q-item>
+        <q-item clickable v-ripple to="/tasks" @click="leftDrawerOpen = false">
+          <q-item-section>Tasks</q-item-section>
+        </q-item>
+        <q-item clickable v-ripple to="/about" @click="leftDrawerOpen = false">
+          <q-item-section>About</q-item-section>
+        </q-item>
+      </q-list>
+    </q-drawer>
 
     <!-- Main Content -->
-    <main class="main-content">
-        <router-view />
-    </main>
+    <q-page-container class="q-px-lg">
+      <router-view />
+    </q-page-container>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 Task Manager. Built with Vue.js</p>
-    </footer>
-  </div>
+    <q-footer class="bg-primary text-white" elevated>
+      <q-toolbar class="justify-center">
+        <span>&copy; 2025 Task Manager. Built with Vue.js + Quasar</span>
+      </q-toolbar>
+    </q-footer>
+  </q-layout>
 </template>
 
-<script>
-export default {
-  name: 'DefaultLayout'
-}
+<script setup lang="ts">
+import { ref } from 'vue'
+import { QLayout, QHeader, QToolbar, QToolbarTitle, QBtn, QDrawer, QList, QItem, QItemSection, QPageContainer, QFooter, QSpace, QIcon, QImg } from 'quasar'
+
+const leftDrawerOpen = ref(false)
 </script>
-
-<style scoped>
-.default-layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.header {
-  background-color: #181d1b;
-  color: white;
-  padding: 1rem 0;
-}
-.header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.nav-link {
-  color: white;
-  margin-left: 1rem;
-  text-decoration: none;
-}
-.nav-link:hover {
-  text-decoration: underline;
-}
-.main-content {
-  flex: 1;
-  padding: 2rem;
-  background-color: #f5f5f5;
-}
-.footer {
-  background-color: #35495e;
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-}
-.footer p {
-  margin: 0;
-}
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.nav-brand h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-.nav {
-  display: flex;
-  align-items: center;
-}
-
-/* Responsive Styles */
-
-@media (max-width: 768px) {
-  .header .container {
-    flex-direction: column;
-    align-items: start;
-  }
-  .nav {
-    flex-direction: column;
-    width: 100%;
-  }
-  .nav-link {
-    padding: 0.5rem 1rem;
-  }
-}
-@media (max-width: 480px) {
-  .nav-brand h1 {
-    font-size: 1.2rem;
-  }
-  .nav-link {
-    margin-left: 0;
-    padding: 0.5rem 0;
-  }
-}
-</style>
