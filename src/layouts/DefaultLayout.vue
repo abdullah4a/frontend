@@ -44,7 +44,7 @@
     </q-drawer>
 
     <!-- Main Content -->
-    <q-page-container class="q-px-lg">
+    <q-page-container class="container-fluid q-px-xl">
       <router-view />
     </q-page-container>
 
