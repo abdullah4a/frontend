@@ -1,18 +1,23 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+// main.ts
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
+import router from "./router";
 
-// ag-Grid CSS
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-alpine.css";
+// Quasar imports
+import { Quasar } from "quasar";
+import "quasar/dist/quasar.css";
+import "@quasar/extras/material-icons/material-icons.css";
 
+const app = createApp(App);
 
-import DefaultLayout from './layouts/DefaultLayout.vue'
+// Create pinia instance
+const pinia = createPinia();
 
-const app = createApp(App)
+app.use(pinia);
+app.use(router);
+app.use(Quasar, {
+  plugins: {}, // add Dialog, Notify etc. later if needed
+});
 
-app.component('DefaultLayout', DefaultLayout)
-
-app.use(router)
-
-app.mount('#app')
+app.mount("#app");

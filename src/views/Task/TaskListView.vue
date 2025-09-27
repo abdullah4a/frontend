@@ -1,11 +1,11 @@
 <template>
     <div>
-        <h1>Task List</h1>
-        <p>Here you can manage your tasks.</p>
+        <TaskTable />
     </div>
 </template>
 
 <script setup lang="ts">
+import TaskTable from '../../components/task/TaskTable.vue';
 
 </script>
 
