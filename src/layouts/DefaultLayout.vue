@@ -14,10 +14,10 @@
           class="q-mr-sm"
         />
         <q-space></q-space>
-        <div class="row items-center no-wrap q-gutter-sm">
-            <q-icon name="settings" :disabled="true"></q-icon>
-        <q-icon name="notifications" :disabled="true"></q-icon>
-        <q-icon name="person" :disabled="true"></q-icon>
+        <div class="row items-center no-wrap q-gutter-md">
+        <q-icon name="settings" :disabled="true" :size="'md'"></q-icon>
+        <q-icon name="notifications" :disabled="true" :size="'md'"></q-icon>
+        <q-icon name="person" :disabled="true" :size="'md'"></q-icon>
 
         </div>
         </q-toolbar>
